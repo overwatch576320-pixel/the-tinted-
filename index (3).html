@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  THE TINTED PASS: editorial style page
+  Everything marked PLACEHOLDER is sample text. Replace it with your own.
+  Tip: use Ctrl+F in the GitHub editor to find the words you want to change.
+============================================================= -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Tinted Pass</title>
+
+  <!-- Two Google fonts: a tight sans for headlines, an italic serif for accent words.
+       If the fonts fail to load, the fallbacks after the commas are used. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- COLORS: change these and the whole page changes ---------- */
+    :root {
+      --paper: #f2f2f0;     /* light panels */
+      --ink: #2c2b2f;       /* main text */
+      --muted: #6d6b70;     /* small text */
+      --line: #cfcfcc;      /* thin divider lines */
+      --pink: #e8a3c4;
+      --pink-deep: #c97aa6;
+      --plum: #3a3140;
+      --green: #a7cf74;
+      --sky-top: #8fb8e6;
+      --sky-bottom: #d7e8f5;
+      --black: #000;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--black);
+      color: var(--ink);
+      font-family: "Inter Tight", Arial, sans-serif;
+      line-height: 1.45;
+    }
+    .serif { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400; }
+
+    /* ---------- 1. TOP BAR WITH LOGO ---------- */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 5vw 34px;
+      color: #fff;
+    }
+    .brand { display: inline-block; text-decoration: none; color: #fff; font-weight: 600; font-size: 1.15rem; line-height: 1.1; }
+    .brand .dots { display: flex; gap: 4px; margin-bottom: 5px; }
+    .brand .dots i { width: 10px; height: 10px; border-radius: 50%; background: #2ee26a; display: block; }
+    .brand .bar { display: block; height: 5px; width: 100%; background: #fff; margin-bottom: 8px; }
+    .topbar nav a { color: #cfcfcf; text-decoration: none; margin-left: 24px; font-size: 0.95rem; }
+    .topbar nav a:hover { color: #fff; }
+
+    /* ---------- 2. HERO: sky, hills, big headline ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 86vh;
+      padding: 36px 5vw 0;
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 85%);
+      display: flex;
+      flex-direction: column;
+    }
+    .hero .tag { color: #fff; font-weight: 500; font-size: 0.95rem; }
+    .hero h1 {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      font-weight: 500;
+      font-size: clamp(2.8rem, 8.5vw, 6.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      max-width: 11ch;
+      margin-top: 22px;
+    }
+    .hero h1 .serif { font-size: 1.04em; letter-spacing: -0.01em; }
+    .hero .lede {
+      position: relative; z-index: 2;
+      color: #fff; max-width: 34ch; margin-top: 26px; font-size: 1.1rem;
+    }
+    /* Hills drawn with SVG sit at the bottom of the hero */
+    .hills { position: absolute; left: 0; bottom: 0; width: 100%; height: 46%; z-index: 1; }
+    .fly { position: absolute; z-index: 3; width: 54px; height: 44px; }
+
+    /* ---------- 3. STATS PANEL + WING ART ---------- */
+    .feature { display: grid; grid-template-columns: 1fr 1.1fr; margin-top: 16px; }
+    .stats { background: var(--paper); }
+    .stats .intro {
+      padding: 42px 5vw 34px 36px;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      line-height: 1.15;
+      max-width: 26ch;
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 36px;
+      border-top: 1px solid var(--line);
+    }
+    /* Even rows (2 and 4) sit on the right, like the reference */
+    .stat-row:nth-of-type(even) { justify-content: flex-end; }
+    .stat-row .num { font-size: clamp(3.4rem, 7vw, 5.6rem); font-weight: 400; letter-spacing: -0.04em; line-height: 1; color: #4a4950; }
+    .stat-row .label { max-width: 16ch; font-size: 0.78rem; color: var(--muted); }
+    .stat-row svg { width: 80px; height: 56px; flex: none; }
+
+    .art {
+      position: relative;
+      min-height: 560px;
+      background: linear-gradient(180deg, var(--pink) 0%, #b784b8 60%, #6b5a80 100%);
+      overflow: hidden;
+    }
+    .art .wing { position: absolute; top: 0; right: 0; width: 66%; height: 70%; }
+    .art .note {
+      position: absolute; left: 12%; bottom: 24%; width: 76%;
+      background: #fff; padding: 20px 22px; font-size: 1rem; line-height: 1.3;
+    }
+    .art .blocks { position: absolute; right: 0; bottom: 0; height: 18%; width: 60%; display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .art .blocks span:nth-child(1) { background: var(--pink); }
+    .art .blocks span:nth-child(2) { background: var(--plum); }
+    .art .blocks span:nth-child(3) { background: #d9d9dd; }
+
+    /* ---------- 4. SECOND HEADLINE BLOCK ---------- */
+    .statement {
+      margin-top: 16px;
+      background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+      padding: 90px 5vw 100px;
+    }
+    .statement .tag { color: #fff; font-weight: 500; font-size: 0.95rem; }
+    .statement h2 {
+      color: #fff; font-weight: 500; letter-spacing: -0.03em; line-height: 1;
+      font-size: clamp(2.3rem, 6vw, 4.8rem); max-width: 14ch; margin-top: 18px;
+    }
+    .statement h2 .serif { font-size: 1.05em; }
+
+    /* ---------- 5. CONTACT ---------- */
+    .contact { background: var(--paper); padding: 70px 5vw; display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; align-items: end; }
+    .contact h3 { font-weight: 500; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -0.03em; line-height: 1.05; max-width: 14ch; }
+    .button {
+      display: inline-block; background: var(--ink); color: #fff; text-decoration: none;
+      padding: 15px 28px; font-weight: 500;
+    }
+    .button:hover { background: var(--pink-deep); }
+    footer { color: #8c8c8c; padding: 24px 5vw; font-size: 0.85rem; }
+
+    /* Keyboard users see a clear outline when tabbing */
+    a:focus-visible { outline: 3px solid #2ee26a; outline-offset: 3px; }
+
+    /* ---------- PHONES ---------- */
+    @media (max-width: 800px) {
+      .feature { grid-template-columns: 1fr; }
+      .art { min-height: 480px; }
+      .topbar nav a { margin-left: 14px; }
+      .stat-row { padding: 18px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Two small butterfly shapes defined once, then reused with <use> below -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="butterfly" viewBox="0 0 100 80">
+        <path d="M50 40 C30 5 4 8 8 32 C10 48 30 52 50 40Z" fill="#f08a2c"/>
+        <path d="M50 40 C70 5 96 8 92 32 C90 48 70 52 50 40Z" fill="#f08a2c"/>
+        <path d="M50 40 C32 48 22 72 36 74 C46 74 50 56 50 40Z" fill="#d9701a"/>
+        <path d="M50 40 C68 48 78 72 64 74 C54 74 50 56 50 40Z" fill="#d9701a"/>
+        <circle cx="26" cy="26" r="3" fill="#2c2b2f"/><circle cx="74" cy="26" r="3" fill="#2c2b2f"/>
+        <rect x="48.5" y="30" width="3" height="28" rx="1.5" fill="#2c2b2f"/>
+      </symbol>
+      <symbol id="pinkmoth" viewBox="0 0 100 70">
+        <path d="M50 35 C28 0 2 6 8 30 C12 46 32 48 50 35Z" fill="#ef9cbd"/>
+        <path d="M50 35 C72 0 98 6 92 30 C88 46 68 48 50 35Z" fill="#ef9cbd"/>
+        <path d="M50 35 C34 44 26 64 40 64 C48 64 50 50 50 35Z" fill="#e283aa"/>
+        <path d="M50 35 C66 44 74 64 60 64 C52 64 50 50 50 35Z" fill="#e283aa"/>
+        <circle cx="24" cy="24" r="2.6" fill="#2c2b2f"/><circle cx="76" cy="24" r="2.6" fill="#2c2b2f"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===== 1. TOP BAR ===== -->
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="dots"><i></i><i></i></span>
+      <span class="bar"></span>
+      The<br>Tinted<br>Pass
+    </a>
+    <nav>
+      <a href="#collection">Collection</a>
+      <a href="#story">Story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== 2. HERO ===== -->
+  <main class="hero">
+    <p class="tag">Collection 01 &nbsp;|&nbsp; Placeholder</p>
+    <h1>A little colour makes every <span class="serif">pass</span> count.</h1>
+    <p class="lede">PLACEHOLDER: one sentence about what The Tinted Pass is and who it is for.</p>
+
+    <svg class="fly" style="right:18%; top:48%; transform:rotate(-14deg)" viewBox="0 0 100 80"><use href="#butterfly"/></svg>
+    <svg class="fly" style="right:8%; top:62%; width:40px; height:32px; transform:rotate(18deg)" viewBox="0 0 100 80"><use href="#butterfly"/></svg>
+    <svg class="fly" style="right:30%; top:70%; width:34px; height:27px; transform:rotate(-30deg)" viewBox="0 0 100 80"><use href="#butterfly"/></svg>
+
+    <svg class="hills" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 140 C150 60 260 120 400 90 C560 50 700 120 1000 40 L1000 300 L0 300Z" fill="#9dc38a"/>
+      <path d="M0 210 C180 150 320 230 520 180 C700 130 850 210 1000 150 L1000 300 L0 300Z" fill="#6fa564"/>
+      <path d="M0 270 C250 220 450 290 700 240 C850 215 940 250 1000 235 L1000 300 L0 300Z" fill="#4f8750"/>
+    </svg>
+  </main>
+
+  <!-- ===== 3. NUMBERS + ARTWORK ===== -->
+  <section class="feature" id="collection">
+    <div class="stats">
+      <p class="intro">PLACEHOLDER: a short lead-in sentence that sets up the numbers below.</p>
+
+      <div class="stat-row"><span class="num">44%</span><span class="label">PLACEHOLDER label for this number</span></div>
+      <div class="stat-row"><svg viewBox="0 0 100 70"><use href="#pinkmoth"/></svg><span class="num">43%</span><span class="label">PLACEHOLDER label for this number</span></div>
+      <div class="stat-row"><span class="num">43%</span><span class="label">PLACEHOLDER label for this number</span></div>
+      <div class="stat-row"><span class="num">38%</span><span class="label">PLACEHOLDER label for this number</span></div>
+    </div>
+
+    <div class="art" id="story">
+      <!-- Wing pattern made from simple shapes -->
+      <svg class="wing" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <rect width="400" height="420" fill="#a7cf74"/>
+        <ellipse cx="330" cy="40" rx="150" ry="70" fill="#f1a2c3" transform="rotate(-18 330 40)"/>
+        <ellipse cx="60" cy="300" rx="190" ry="90" fill="#8fbf62" transform="rotate(-24 60 300)"/>
+        <ellipse cx="300" cy="380" rx="200" ry="90" fill="#f1a2c3" transform="rotate(-24 300 380)"/>
+        <ellipse cx="250" cy="220" rx="140" ry="95" fill="#ef9cbd" transform="rotate(-22 250 220)"/>
+        <circle cx="250" cy="220" r="62" fill="#f8d3e3"/>
+        <circle cx="250" cy="220" r="46" fill="#e07aa6"/>
+        <circle cx="250" cy="220" r="30" fill="#2c2330"/>
+        <circle cx="250" cy="220" r="12" fill="#f1a2c3"/>
+      </svg>
+      <div class="note">PLACEHOLDER: a longer thought about the brand, in two or three lines. This sits in a white box over the artwork.</div>
+      <div class="blocks"><span></span><span></span><span></span></div>
+    </div>
+  </section>
+
+  <!-- ===== 4. SECOND STATEMENT ===== -->
+  <section class="statement">
+    <p class="tag">Statement 02 &nbsp;|&nbsp; Placeholder</p>
+    <h2>With the right tint, <span class="serif">style</span> is a comeback.</h2>
+  </section>
+
+  <!-- ===== 5. CONTACT ===== -->
+  <section class="contact" id="contact">
+    <h3>Say hello to The Tinted Pass.</h3>
+    <a class="button" href="mailto:hello@thetintedpass.in">hello@thetintedpass.in</a>
+  </section>
+
+  <footer>&copy; <span id="year"></span> The Tinted Pass</footer>
+
+  <script>
+    /* Fills in the current year automatically */
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
